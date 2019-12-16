@@ -1,0 +1,10 @@
+*.weights
+*.pkl
+*.pyc
+*.swp
+Kitti/testing
+Kitti/training
+legacy
+eval/video/2011_09_26
+.idea/
+.vscode/
