@@ -166,7 +166,6 @@ class Dataset(data.Dataset):
 
         return label
 
-
     def get_bin(self, angle):
 
         # angle是alpha转换成0-2pi的结果

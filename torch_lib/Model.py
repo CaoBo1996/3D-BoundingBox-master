@@ -59,7 +59,14 @@ class Model(nn.Module):
             # nn.Softmax()
             # nn.Sigmoid()
         )
-        self.dimension = nn.Sequential(nn.Linear(512 * 7 * 7, 512), nn.ReLU(True), nn.Dropout(), nn.Linear(512, 512), nn.ReLU(True), nn.Dropout(), nn.Linear(512, 3))
+        self.dimension = nn.Sequential(
+            nn.Linear(512 * 7 * 7, 512),
+            nn.ReLU(True), nn.Dropout(),
+            nn.Linear(512, 512),
+            nn.ReLU(True),
+            nn.Dropout(),
+            nn.Linear(512, 3)
+            )
 
     def forward(self, x):
         x = self.features(x)  # 512 x 7 x 7

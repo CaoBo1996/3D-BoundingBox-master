@@ -81,7 +81,7 @@ def main():
             # 的个数为2，所以对于每一个label标签中的每一行，Confidence都是1*2矩阵
             truth_conf = local_labels['Confidence'].long()
 
-            # 标签中的真正的维度信息
+            # 标签中的真正的维度信息，经过了减去类别均值的操作
             truth_dim = local_labels['Dimensions'].float()
 
             local_batch = local_batch.float()

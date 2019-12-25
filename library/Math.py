@@ -56,6 +56,8 @@ def create_corners(dimension, location=None, R=None):
 # Math help: http://ywpkwon.github.io/pdf/bbox3d-study.pdf
 def calc_location(dimension, proj_matrix, box_2d, alpha, theta_ray):
     # global orientation
+
+    # alpha + theta_ray等于oritation
     orient = alpha + theta_ray
     R = rotation_matrix(orient)
 
