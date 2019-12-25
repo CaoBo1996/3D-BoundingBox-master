@@ -58,6 +58,8 @@ def plot_regressed_3d_bbox(img, cam_to_img, box_2d, dimensions, alpha, theta_ray
     location, X = calc_location(dimensions, cam_to_img, box_2d, alpha, theta_ray)
 
     orient = alpha + theta_ray
+    print(orient)
+    print(alpha)
 
     if img_2d is not None:
         plot_2d_box(img_2d, box_2d)
@@ -152,6 +154,7 @@ def main():
             # 因为yolo定义的类别数量是比KITTI数据集的类别数量多，所以可能yolo检测出了一个类别，但没有出现
             # 在KITTI数据集的枚举类别中
             if not averages.recognized_class(detection.detected_class):
+                print('class ' + detection.detected_class + ' is not in KITTI class, so ignore this class')
                 continue
 
             # this is throwing when the 2d bbox is invalid
@@ -160,6 +163,7 @@ def main():
             try:
                 detectedObject = DetectedObject(img, detection.detected_class, detection.box_2d, calib_file)
             except:
+                print("yolo检测错误，2D框无效！")
                 continue
 
             theta_ray = detectedObject.theta_ray
@@ -215,7 +219,7 @@ def main():
             cv2.imshow('3D detections', img)
 
         if not FLAGS.hide_debug:
-            print('Got %s poses in %.3f seconds' % (len(detections), time.time() - start_time))
+            print('Got %s detect class in %.3f seconds' % (len(detections), time.time() - start_time))
             print('-------------')
 
         if FLAGS.video:
